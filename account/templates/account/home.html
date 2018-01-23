@@ -1,0 +1,20 @@
+{% extends 'basic.html' %}
+
+{% block body %}
+
+
+<h1>Welcome</h1>
+
+    {{ name }}
+    {% for num in number %}
+        <li>
+        {{ num }}
+        </li>
+
+    {% endfor %}
+{% endblock %}
+
+{% block head %}
+
+home
+{% endblock %}

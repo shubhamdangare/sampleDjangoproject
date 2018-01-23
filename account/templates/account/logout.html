@@ -1,0 +1,14 @@
+
+
+{% extends 'basic.html' %}
+{% block body %}
+
+
+    <h1>YOU HAVE</h1>
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="submit" value="Reset">
+    </form>
+    {% endblock %}

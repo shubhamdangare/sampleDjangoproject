@@ -1,0 +1,25 @@
+
+
+{% extends 'basic.html' %}
+{% block body %}
+
+
+    <h1>Welcome</h1>
+
+    {% if user.userprofile.image %}
+    <img src="{{ user.userprofile.image.url }}" width="100" height="100">
+    {% endif %}
+    <br>
+    Name:-{{ user }}
+    <br>
+    UserName:-{{ user.username }}
+    <br>
+
+    lastname:-{{ user.last_name }}
+    <br>
+    email:-{{ user.email }}
+    <br>
+
+
+    Address: {{ user.userprofile.address }}
+{% endblock %}

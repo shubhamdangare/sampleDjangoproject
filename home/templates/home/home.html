@@ -1,0 +1,40 @@
+{% extends 'basic.html' %}
+{% block body %}
+<div class="row">
+    <div class="col-md-8">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.post }}
+                <br>
+
+            <input type="submit" value="submit">
+            </form>
+            {% for post in post %}
+            <h1>{{ post.post }}</h1>
+            Posted By<p>{{ post.user.username }}{{ post.created }} </p>
+            {% endfor %}
+
+    </div>
+   <div class="col-md-4">
+       <h1>
+           Other User</h1>
+           {% for user in users %}
+            <h1>
+            <a href="{% url 'account:profilepk' pk=user.pk %}">
+            <p>{{ user.username }} </p>
+           </a> </h1>
+            {% endfor %}
+
+   <h1>
+           Friend list</h1>
+           {% for friend in friend %}
+            <h1>
+            <a href="{% url 'account:profilepk' pk=friend.pk %}">
+            <p>{{ friend.username }} </p>
+           </a> </h1>
+            {% endfor %}
+
+   </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+   {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'account/style.css'%}" type="text/css">
+
+    <meta charset="UTF-8" name="viewport" content="width=device-width,inital=1.0">
+
+    <title>{% block head %}
+
+        Title {% endblock %}</title>
+
+</head>
+<body>
+
+
+<div class="container">
+    {% if user.is_authenticated %}
+    <br>
+     <nav class="navbar navbar-expand-md navbar-light  bg-light">
+      <a class="navbar-brand" href="/">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto" >
+            <li class="nav-item"><a href="{% url 'home:home' %}">Home</a>
+            </li>
+
+
+            <li class="nav-item"><a href="{% url  'account:logout' %}">Logout</a></li>
+
+              <li class="nav-item"><a href="{% url  'account:profile' %}">Profile</a></li>
+            <li class="nav-item"><a href="{% url  'account:editprofile' %}">Profile Edit</a></li>
+
+            <li class="nav-item"><a href="{% url  'account:changepass' %}">Password Change</a></li>
+
+
+
+        </ul>
+      </div>
+     </nav>
+          {% else %}
+          <br>
+        <nav class="navbar navbar-expand-md navbar-light  bg-light">
+             <a class="navbar-brand" href="/">Home</a>
+                <ul class="navbar-nav mr-auto" >
+                    <li class="nav-item"><a href="{% url 'account:passwodreset' %}">Password Reset</a></li>
+
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+
+
+         <a class="navbar-brand align-right" href="{% url  'account:register' %}">Register</a>
+        <a class="navbar-brand align-right" href="{% url  'account:login' %}">Login</a>
+
+        </form>
+          {%  endif %}
+    </nav>
+         <br>
+         <br>
+        <br>
+        <br>
+</div>
+
+
+<div class="container">
+
+{% block body %}
+{% endblock %}
+</div>
+
+
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.3.0.min.js"
+  integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4="
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+</html>
